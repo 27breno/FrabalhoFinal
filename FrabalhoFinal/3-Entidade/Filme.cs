@@ -10,7 +10,7 @@ namespace FrabalhoFinal._3_Entidade
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public int AnodeCriaçao { get; set;}
+        public int AnodeCriacao { get; set;}
 
     }
 }

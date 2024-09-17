@@ -17,9 +17,9 @@ namespace FrabalhoFinal._4_Data
                 connection.Open();
                 string commandoSQL = @"
                     CREATE TABLE IF NOT EXISTS FILMES (
-                        ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                        NOME TEXT NOT NULL,
-                        ANODECRIACAO INTEGER NOT NULL   
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Nome TEXT NOT NULL,
+                        AnodeCriacao INTEGER NOT NULL   
                     );";
 
                 using (var command = new SQLiteCommand(commandoSQL, connection))
@@ -28,9 +28,9 @@ namespace FrabalhoFinal._4_Data
                 }
                 commandoSQL = @"
                     CREATE TABLE IF NOT EXISTS GENEROS (
-                        ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                        NOME TEXT NOT NULL,
-                        CLASSIDADE INTEGER NOT NULL             
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Nome TEXT NOT NULL,
+                        ClassIdade INTEGER NOT NULL             
                     );";
 
                 using (var command = new SQLiteCommand(commandoSQL, connection))
@@ -39,9 +39,9 @@ namespace FrabalhoFinal._4_Data
                 }
                 commandoSQL = @"
                     CREATE TABLE IF NOT EXISTS PESSOAS (
-                        ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                        NOME TEXT NOT NULL,
-                        IDADE INTEGER NOT NULL,
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Nome TEXT NOT NULL,
+                        Idade INTEGER NOT NULL,
                         CPF INTEGER NOT NULL
                     );";
 
