@@ -8,12 +8,13 @@ namespace WebApplication1.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class GeneroController : ControllerBase
+
+    public class ConteudoController : ControllerBase
     {
 
         private readonly ConteudoService service;
         private readonly IMapper mapper;
-        public GeneroController(IMapper _mapper, IConfiguration configuration)
+        public ConteudoController(IMapper _mapper, IConfiguration configuration)
         {
             string connectionString = configuration.GetConnectionString("DefaultConnection");
             service = new ConteudoService(connectionString);
@@ -24,8 +25,8 @@ namespace WebApplication1.Controllers
         [HttpPost("adicionar-Avaliação")]
         public void adicionaraluno(Conteudo u)
         {
-            Conteudo usuario = mapper.Map<Conteudo>(u);
-            service.Adicionar(usuario);
+            //Conteudo usuario = mapper.Map<Conteudo>(u);
+            service.Adicionar(u);
         }
 
         [HttpGet("Listar-Avaliações")]

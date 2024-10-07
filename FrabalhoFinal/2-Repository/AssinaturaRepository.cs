@@ -9,48 +9,51 @@ using System.Threading.Tasks;
 
 namespace FrabalhoFinal._2_Repository
 {
-    public class GeneroRepository
+    public class AssinaturaRepository
     {
+
         private readonly string ConnectionString;
-        public GeneroRepository(string connectionString)
+        public AssinaturaRepository(string connectionString)
         {
 
             ConnectionString = connectionString;
 
         }
-        public void Adicionar(Genero u)
+        public void Adicionar(Assinatura u)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            connection.Insert<Genero>(u);
+            connection.Insert<Assinatura>(u);
 
         }
-        public List<Genero> listar()
+        public List<Assinatura> listar()
         {
             {
                 using var connection = new SQLiteConnection(ConnectionString);
                 {
-                    List<Genero> u = connection.GetAll<Genero>().ToList();
+                    List<Assinatura> u = connection.GetAll<Assinatura>().ToList();
                     return u;
                 }
+                
             }
+            
         }
-        public Genero Buscarporid(int id)
+          
+        public Assinatura Buscarporid(int id)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            return connection.Get<Genero>(id);
+            return connection.Get<Assinatura>(id);
         }
         public void Remover(int id)
         {
             using var connection = new SQLiteConnection(ConnectionString);
-            Genero novoproduto = Buscarporid(id);
-            connection.Delete<Genero>(novoproduto);
+            Assinatura novoproduto = Buscarporid(id);
+            connection.Delete<Assinatura>(novoproduto);
         }
-        public void editar(Genero u)
+        public void editar(Assinatura u)
         {
             using var connection = new SQLiteConnection(ConnectionString);
 
-            connection.Update<Genero>(u);
+            connection.Update<Assinatura>(u);
         }
     }
 }
-

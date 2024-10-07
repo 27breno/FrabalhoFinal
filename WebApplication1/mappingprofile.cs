@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using FrabalhoFinal._3_Entidade;
+using FrabalhoFinal._3_Entidade.DTO.Assinatura;
 using FrabalhoFinal._3_Entidade.DTO.FIlme;
 using FrabalhoFinal._3_Entidade.DTO.Genero;
-using FrabalhoFinal._3_Entidade.DTO.Pessoa;
+using FrabalhoFinal._3_Entidade.DTO.Pessoas;
 
 namespace WebApplication1
 {
@@ -10,8 +11,9 @@ namespace WebApplication1
     {
         public mappingprofile()
         {
+            CreateMap<CreateAssinatura, Assinatura>().ReverseMap();
             CreateMap<CreateFilme, Filme>().ReverseMap();
-            CreateMap<CreateGenero, Genero>().ReverseMap();
+            CreateMap<CreateConteudo, Conteudo>().ReverseMap();
             CreateMap<CreatePessoa, Pessoa>().ReverseMap();
         }
     }

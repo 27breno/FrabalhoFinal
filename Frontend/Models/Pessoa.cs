@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FrabalhoFinal._3_Entidade.DTO.Genero
+namespace FrabalhoFinal._3_Entidade
 {
-    public class CreateGenero
+    public class Pessoa
     {
-        
+        public int Id { get; set; }
+
         public string Nome { get; set; }
 
-        public int ClassIdade { get; set; }
+        public int Idade { get; set; }
+
+        public int CPF { get; set; }
     }
 }

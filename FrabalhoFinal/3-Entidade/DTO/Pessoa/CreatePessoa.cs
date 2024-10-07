@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FrabalhoFinal._3_Entidade.DTO.Pessoa
+namespace FrabalhoFinal._3_Entidade.DTO.Pessoas
 {
     public class CreatePessoa
     {

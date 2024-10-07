@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace FrabalhoFinal._1_Service
 {
-    public class GeneroService
+    public class ConteudoService
     {
-        GeneroRepository repositorio { get; set; }
-        public GeneroService(string connectionString)
+        ConteudoRepository repositorio { get; set; }
+        public ConteudoService(string connectionString)
         {
-            repositorio = new GeneroRepository(connectionString);
+            repositorio = new ConteudoRepository(connectionString);
         }
-        public void Adicionar(Genero a)
+        public void Adicionar(Conteudo a)
         {
             repositorio.Adicionar(a);
         }
 
-        public List<Genero> Listar()
+        public List<Conteudo> Listar()
         {
             return repositorio.listar();
         }
-        public void editar(Genero a)
+        public void editar(Conteudo a)
         {
             repositorio.editar(a);
         }

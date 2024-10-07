@@ -5,31 +5,31 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controllers
 {
-
     [ApiController]
     [Route("[controller]")]
-    public class GeneroController : ControllerBase
+
+    public class AssinaturaController : ControllerBase
     {
 
-        private readonly ConteudoService service;
+        private readonly AssinaturaService service;
         private readonly IMapper mapper;
-        public GeneroController(IMapper _mapper, IConfiguration configuration)
+        public AssinaturaController(IMapper _mapper, IConfiguration configuration)
         {
             string connectionString = configuration.GetConnectionString("DefaultConnection");
-            service = new ConteudoService(connectionString);
+            service = new AssinaturaService(connectionString);
             mapper = _mapper;
 
         }
 
         [HttpPost("adicionar-Avaliação")]
-        public void adicionaraluno(Conteudo u)
+        public void adicionaraluno(Assinatura u)
         {
-            Conteudo usuario = mapper.Map<Conteudo>(u);
-            service.Adicionar(usuario);
+            //Conteudo usuario = mapper.Map<Conteudo>(u);
+            service.Adicionar(u);
         }
 
         [HttpGet("Listar-Avaliações")]
-        public List<Conteudo> Listaraluno()
+        public List<Assinatura> Listaraluno()
         {
             return service.Listar();
         }
@@ -39,10 +39,11 @@ namespace WebApplication1.Controllers
             service.Remover(id);
         }
         [HttpPut("editar-Avaliação")]
-        public void editaraluno(Conteudo usuario)
+        public void editaraluno(Assinatura usuario)
         {
             service.editar(usuario);
         }
 
     }
 }
+    

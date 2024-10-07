@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace FrabalhoFinal._3_Entidade
 {
-    public class Genero
+    public  class Plano
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        
-        public int ClassIdade { get; set;}
+        public decimal Valor { get; set; }
+        public string Duracao { get; set; } // ex: "mensal", "anual"
+        public string Recursos { get; set; } // ex: "2 telas, HD"
     }
 }

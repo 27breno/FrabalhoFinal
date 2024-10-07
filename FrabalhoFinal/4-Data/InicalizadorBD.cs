@@ -27,10 +27,15 @@ namespace FrabalhoFinal._4_Data
                     command.ExecuteNonQuery();
                 }
                 commandoSQL = @"
-                    CREATE TABLE IF NOT EXISTS GENEROS (
+                    CREATE TABLE IF NOT EXISTS CONTEUDOS (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        Nome TEXT NOT NULL,
-                        ClassIdade INTEGER NOT NULL             
+                        Titulo TEXT NOT NULL,
+                        Descricao TEXT NOT NULL,
+                        AnoLancamento INTERGER NOT NULL,
+                        Genero TEXT NOT NULL,
+                        TipoConteudo TEXT NOT NULL,
+                        Duracao INTERGER NOT NULL,
+                        ClassificacaoEtaria TEXT NOT NULL
                     );";
 
                 using (var command = new SQLiteCommand(commandoSQL, connection))
@@ -45,6 +50,21 @@ namespace FrabalhoFinal._4_Data
                         CPF INTEGER NOT NULL
                     );";
 
+                using (var command = new SQLiteCommand(commandoSQL, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+                commandoSQL = @"
+                    CREATE TABLE IF NOT EXISTS ASSINATURAS (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        DataInicio TEXT NOT NULL,
+                        DataFim TEXT NOT NULL,
+                        Status TEXT NOT NULL,
+                        FormaPagamento TEXT NOT NULL,
+                        Valor DECIMAL NOT NULL,
+                        Pessoaid INTERGER NOT NULL,
+                        PlanoId INTERGER NOT NULL
+                    );";
                 using (var command = new SQLiteCommand(commandoSQL, connection))
                 {
                     command.ExecuteNonQuery();
