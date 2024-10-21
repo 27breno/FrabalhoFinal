@@ -13,8 +13,6 @@ namespace FrabalhoFinal._3_Entidade
         public DateTime? DataFim { get; set; } // Pode ser nulo se a assinatura estiver ativa
         public string Status { get; set; }
         public decimal Valor { get; set; }
-        public string FormaPagamento { get; set; }
-        public int Pessoaid { get; set; } 
-        public int PlanoId { get; set; }
+        public int Pessoaid { get; set; }
     }
 }

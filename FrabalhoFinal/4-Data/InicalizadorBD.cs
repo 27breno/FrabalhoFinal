@@ -59,11 +59,10 @@ namespace FrabalhoFinal._4_Data
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         DataInicio TEXT NOT NULL,
                         DataFim TEXT NOT NULL,
-                        Status TEXT NOT NULL,
-                        FormaPagamento TEXT NOT NULL,
+                        Tipo TEXT NOT NULL,
                         Valor DECIMAL NOT NULL,
                         Pessoaid INTERGER NOT NULL,
-                        PlanoId INTERGER NOT NULL
+                       
                     );";
                 using (var command = new SQLiteCommand(commandoSQL, connection))
                 {
