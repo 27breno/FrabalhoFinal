@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace FrabalhoFinal._1_Service
 {
-    public class FilmeService
+    public class AvaliacaoService
     {
-        FilmeRepository repositorio { get; set; }
-        public FilmeService(string connectionString)
+        AvaliacaoRepository repositorio { get; set; }
+        public AvaliacaoService(string connectionString)
         {
-            repositorio = new FilmeRepository(connectionString);
+            repositorio = new AvaliacaoRepository(connectionString);
         }
-        public void Adicionar(Filme a)
+        public void Adicionar(Avaliacao a)
         {
             repositorio.Adicionar(a);
         }
 
-        public List<Filme> Listar()
+        public List<Avaliacao> Listar()
         {
             return repositorio.listar();
         }
-        public void editar(Filme a)
+        public void editar(Avaliacao a)
         {
             repositorio.editar(a);
         }

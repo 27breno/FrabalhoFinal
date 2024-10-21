@@ -16,11 +16,14 @@ namespace FrabalhoFinal._4_Data
             {
                 connection.Open();
                 string commandoSQL = @"
-                    CREATE TABLE IF NOT EXISTS FILMES (
+                    CREATE TABLE IF NOT EXISTS AVALIACAO (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        Nome TEXT NOT NULL,
-                        AnodeCriacao INTEGER NOT NULL   
+                        ConteudoId INTERGER NOT NULL,
+                        PessoaId INTEGER NOT NULL,
+                        Nota INTERGER NOT NULL,
+                        Comentario TEXT NOT NULL
                     );";
+          
 
                 using (var command = new SQLiteCommand(commandoSQL, connection))
                 {
@@ -33,9 +36,8 @@ namespace FrabalhoFinal._4_Data
                         Descricao TEXT NOT NULL,
                         AnoLancamento INTERGER NOT NULL,
                         Genero TEXT NOT NULL,
-                        TipoConteudo TEXT NOT NULL,
                         Duracao INTERGER NOT NULL,
-                        ClassificacaoEtaria TEXT NOT NULL
+                       CategoriaId INTERGER NOT NULL
                     );";
 
                 using (var command = new SQLiteCommand(commandoSQL, connection))

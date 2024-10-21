@@ -10,12 +10,11 @@ namespace FrabalhoFinal._3_Entidade.DTO.Assinatura
 
 
     {
+        
         public DateTime DataInicio { get; set; }
         public DateTime? DataFim { get; set; } // Pode ser nulo se a assinatura estiver ativa
         public string Status { get; set; }
         public decimal Valor { get; set; }
-        public string FormaPagamento { get; set; }
-        public Pessoa Pessoaid { get; set; }
-        public Plano PlanoId { get; set; }
+        public int Pessoaid { get; set; }
     }
 }
