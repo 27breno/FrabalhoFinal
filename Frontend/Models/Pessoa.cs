@@ -15,5 +15,11 @@ namespace FrabalhoFinal._3_Entidade
         public int Idade { get; set; }
 
         public int CPF { get; set; }
+    
+    public override string ToString()
+    {
+        return $"Id: {Id}  Nome: {Nome}, Idade: {Idade}, CPF: {CPF} " ;
+    }
+
     }
 }

@@ -14,14 +14,12 @@ namespace FrabalhoFinal._3_Entidade
         public DateTime? DataFim { get; set; } // Pode ser nulo se a assinatura estiver ativa
         public string Status { get; set; }
         public decimal Valor { get; set; }
-        public string FormaPagamento { get; set; }
-        public int Pessoaid { get; set; } 
-        public int PlanoId { get; set; }
+        public int Pessoaid { get; set; }
 
         public override string ToString()
         {
             return $"Id: {Id} Assinatura: Data do inicio: {DataInicio}, Data do final: {DataFim}, Status da assinatura: {Status} " +
-                $" valor da assinatura: {Valor}, Forma do pagamento: {FormaPagamento} ";
+                $" valor da assinatura: {Valor} ";
         }
     }
 }

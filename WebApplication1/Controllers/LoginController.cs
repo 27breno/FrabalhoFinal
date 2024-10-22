@@ -7,27 +7,28 @@ namespace WebApplication1.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AvaliacaoController : ControllerBase
+    public class LoginController : ControllerBase
     {
-        private readonly AvaliacaoService service;
+
+        private readonly LoginService service;
         private readonly IMapper mapper;
-        public AvaliacaoController(IMapper _mapper, IConfiguration configuration)
+        public LoginController(IMapper _mapper, IConfiguration configuration)
         {
             string connectionString = configuration.GetConnectionString("DefaultConnection");
-            service = new AvaliacaoService(connectionString);
+            service = new LoginService(connectionString);
             mapper = _mapper;
 
         }
 
         [HttpPost("adicionar-Avaliação")]
-        public void adicionaraluno(Avaliacao u)
+        public void adicionaraluno(Login u)
         {
-            Avaliacao usuario = mapper.Map<Avaliacao>(u);
-            service.Adicionar(usuario);
+            //Conteudo usuario = mapper.Map<Conteudo>(u);
+            service.Adicionar(u);
         }
 
         [HttpGet("Listar-Avaliações")]
-        public List<Avaliacao> Listaraluno()
+        public List<Login> Listaraluno()
         {
             return service.Listar();
         }
@@ -37,7 +38,7 @@ namespace WebApplication1.Controllers
             service.Remover(id);
         }
         [HttpPut("editar-Avaliação")]
-        public void editaraluno(Avaliacao usuario)
+        public void editaraluno(Login usuario)
         {
             service.editar(usuario);
         }

@@ -16,7 +16,7 @@ namespace FrabalhoFinal._4_Data
             {
                 connection.Open();
                 string commandoSQL = @"
-                    CREATE TABLE IF NOT EXISTS AVALIACAO (
+                    CREATE TABLE IF NOT EXISTS AVALIACAOS (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         ConteudoId INTERGER NOT NULL,
                         PessoaId INTEGER NOT NULL,
@@ -63,8 +63,50 @@ namespace FrabalhoFinal._4_Data
                         DataFim TEXT NOT NULL,
                         Tipo TEXT NOT NULL,
                         Valor DECIMAL NOT NULL,
-                        Pessoaid INTERGER NOT NULL,
+                        Pessoaid INTERGER NOT NULL
                        
+                    );";
+
+                using (var command = new SQLiteCommand(commandoSQL, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+                commandoSQL = @"
+                    CREATE TABLE IF NOT EXISTS CONTEUDOS (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Titulo TEXT NOT NULL,
+                        Descricao TEXT NOT NULL,
+                        AnoLancamento INTERGER  NOT NULL,
+                        Genero TEXT NOT NULL,
+                        Pessoaid INTERGER NOT NULL,
+                        Duracao INTERGER NOT NULL,
+                        CategoriaId INTERGER NOT NULL
+                      
+                    );";
+
+                using (var command = new SQLiteCommand(commandoSQL, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+                commandoSQL = @"
+                    CREATE TABLE IF NOT EXISTS CATEGORIAS  (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Tipo TEXT NOT NULL,
+                        Genero TEXT NOT NULL
+                      
+                    );";
+
+                using (var command = new SQLiteCommand(commandoSQL, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+                commandoSQL = @"
+                    CREATE TABLE IF NOT EXISTS LOGINS  (
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Email TEXT NOT NULL,
+                        Senha TEXT NOT NULL,
+                        PessoaId INTETGER NOT NULL
+                      
                     );";
                 using (var command = new SQLiteCommand(commandoSQL, connection))
                 {
