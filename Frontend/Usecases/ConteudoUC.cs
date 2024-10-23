@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Frontend.Usecases
 {
-    internal class ConteudoUC
+    public class ConteudoUC
     {
     }
 }
