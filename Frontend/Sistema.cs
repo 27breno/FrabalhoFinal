@@ -8,5 +8,19 @@ namespace Frontend
 {
     public class Sistema
     {
+        public Sistema(HttpClient  cliente) 
+        { 
+            
+        }
+
+        public void IniciarSistema() 
+        {
+            
+        }
+
+        public void FazerAvaliacao()
+        {
+
+        }
     }
 }

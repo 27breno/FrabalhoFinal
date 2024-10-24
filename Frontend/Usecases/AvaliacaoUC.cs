@@ -15,11 +15,11 @@ namespace Frontend.Usecases
         {
             _client = cliente;
         }
-        public List<Avaliacao> ListarAssinaturas(int usuarioId)
+        public List<Avaliacao> ListarAvaliacao(int usuarioId)
         {
             return _client.GetFromJsonAsync<List<Avaliacao>>("Avaliacao/Listar-Avaliações" + usuarioId).Result;
         }
-        public Avaliacao CadastroAssinatura(Avaliacao endereco)
+        public Avaliacao CadastroAvaliacao(Avaliacao endereco)
         {
             HttpResponseMessage response = _client.PostAsJsonAsync("Avaliacao/adicionar-Avaliação", endereco).Result;
 

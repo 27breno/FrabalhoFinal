@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Frontend.Usecases
+namespace Frontend.DTO
 {
-    public class LoginUC
+    internal class AvaliacaoDTO
     {
     }
 }

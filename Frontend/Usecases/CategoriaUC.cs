@@ -16,11 +16,11 @@ namespace Frontend.Usecases
         }
         public List<CategoriaUC> ListarCategoria(int usuarioId)
         {
-            return _client.GetFromJsonAsync<List<CategoriaUC>>("Avaliacao/Listar-Avaliações" + usuarioId).Result;
+            return _client.GetFromJsonAsync<List<CategoriaUC>>("Categoria/adicionar-Avaliação" + usuarioId).Result;
         }
         public  CategoriaUC CadastroCategoria(CategoriaUC endereco)
         {
-            HttpResponseMessage response = _client.PostAsJsonAsync("Avaliacao/adicionar-Avaliação", endereco).Result;
+            HttpResponseMessage response = _client.PostAsJsonAsync("Categoria/adicionar-Avaliação", endereco).Result;
 
             CategoriaUC enderecoCadastrado = response.Content.ReadFromJsonAsync<CategoriaUC>().Result;
             return enderecoCadastrado;

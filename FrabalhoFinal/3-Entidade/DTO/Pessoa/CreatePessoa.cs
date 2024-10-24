@@ -14,5 +14,8 @@ namespace FrabalhoFinal._3_Entidade.DTO.Pessoas
         public int Idade { get; set; }
 
         public int CPF { get; set; }
+
+        public string Email { get; set; }
+        public string Senha { get; set; }
     }
 }
