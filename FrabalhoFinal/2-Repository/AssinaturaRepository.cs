@@ -1,4 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
+using FrabalhoFinal._2_Repository.Interface;
 using FrabalhoFinal._3_Entidade;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FrabalhoFinal._2_Repository
 {
-    public class AssinaturaRepository
+    public class AssinaturaRepository : IAssinaturaRepository
     {
 
         private readonly string ConnectionString;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Frontend.DTO
 {
-    internal class LoginUsuario
+    internal class LoginUsuarioDTO
     {
     }
 }

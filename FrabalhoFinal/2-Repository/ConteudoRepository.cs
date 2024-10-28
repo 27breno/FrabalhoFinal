@@ -1,4 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
+using FrabalhoFinal._2_Repository.Interface;
 using FrabalhoFinal._3_Entidade;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FrabalhoFinal._2_Repository
 {
-    public class ConteudoRepository
+    public class ConteudoRepository : IConteudoRepository
     {
         private readonly string ConnectionString;
         public ConteudoRepository(string connectionString)
