@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FrabalhoFinal._1_Service;
+using FrabalhoFinal._1_Service.Interfaces;
 using FrabalhoFinal._3_Entidade;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,7 +10,7 @@ namespace WebApplication1.Controllers
     [Route("[controller]")]
     public class AvaliacaoController : ControllerBase
     {
-        private readonly AvaliacaoService service;
+        private readonly IAvaliacaoService service;
         private readonly IMapper mapper;
         public AvaliacaoController(IMapper _mapper, IConfiguration configuration)
         {

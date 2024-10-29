@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FrabalhoFinal._1_Service;
+using FrabalhoFinal._1_Service.Interfaces;
 using FrabalhoFinal._3_Entidade;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +13,7 @@ namespace WebApplication1.Controllers
     public class ConteudoController : ControllerBase
     {
 
-        private readonly ConteudoService service;
+        private readonly IConteudoService service;
         private readonly IMapper mapper;
         public ConteudoController(IMapper _mapper, IConfiguration configuration)
         {

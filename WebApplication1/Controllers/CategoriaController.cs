@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FrabalhoFinal._1_Service;
+using FrabalhoFinal._1_Service.Interfaces;
 using FrabalhoFinal._3_Entidade;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,7 +11,7 @@ namespace WebApplication1.Controllers
     public class CategoriaController : ControllerBase
     {
 
-        private readonly CategoriaService service;
+        private readonly ICategoriaService service;
         private readonly IMapper mapper;
         public CategoriaController(IMapper _mapper, IConfiguration configuration)
         {

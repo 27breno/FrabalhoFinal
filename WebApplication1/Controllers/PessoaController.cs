@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FrabalhoFinal._1_Service;
+using FrabalhoFinal._1_Service.Interfaces;
 using FrabalhoFinal._3_Entidade;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +12,7 @@ namespace WebApplication1.Controllers
         public class PessoaController : ControllerBase
         {
 
-            private readonly PessoaService service;
+            private readonly IPessoaService service;
             private readonly IMapper mapper;
             public PessoaController(IMapper _mapper, IConfiguration configuration)
             {

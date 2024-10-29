@@ -52,6 +52,11 @@ namespace FrabalhoFinal._2_Repository
 
             connection.Update<Conteudo>(u);
         }
+        public Conteudo BuscarPorId(int id)
+        {
+            using var connection = new SQLiteConnection(ConnectionString);
+            return connection.Get<Conteudo>(id);
+        }
     }
 }
 

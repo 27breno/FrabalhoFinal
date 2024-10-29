@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FrabalhoFinal._1_Service;
+using FrabalhoFinal._1_Service.Interfaces;
 using FrabalhoFinal._3_Entidade;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +12,7 @@ namespace WebApplication1.Controllers
     public class AssinaturaController : ControllerBase
     {
 
-        private readonly AssinaturaService service;
+        private readonly IAssinaturaService service;
         private readonly IMapper mapper;
         public AssinaturaController(IMapper _mapper, IConfiguration configuration)
         {

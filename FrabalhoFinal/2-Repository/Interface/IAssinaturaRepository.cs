@@ -14,9 +14,6 @@ namespace FrabalhoFinal._2_Repository.Interface
        
         List<Assinatura> listar();
 
-
-
-
          Assinatura Buscarporid(int id);
 
         void Remover(int id);

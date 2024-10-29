@@ -55,5 +55,10 @@ namespace FrabalhoFinal._2_Repository
 
             connection.Update<Categoria>(u);
         }
+        public Categoria BuscarPorId(int id)
+        {
+            using var connection = new SQLiteConnection(ConnectionString);
+            return connection.Get<Categoria>(id);
+        }
     }
 }

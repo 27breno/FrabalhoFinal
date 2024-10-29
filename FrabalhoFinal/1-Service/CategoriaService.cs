@@ -1,4 +1,5 @@
-﻿using FrabalhoFinal._2_Repository;
+﻿using FrabalhoFinal._1_Service.Interfaces;
+using FrabalhoFinal._2_Repository;
 using FrabalhoFinal._3_Entidade;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FrabalhoFinal._1_Service
 {
-    public class CategoriaService
+    public class CategoriaService : ICategoriaService
     {
         CategoriaRepository repositorio { get; set; }
         public CategoriaService(string connectionString)
