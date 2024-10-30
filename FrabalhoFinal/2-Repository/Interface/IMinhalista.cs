@@ -25,7 +25,7 @@ namespace FrabalhoFinal._2_Repository.Interface
 
 
 
-         List<DTOminhalista> TransformarListaMInhaListaEmListaDTO(List<MinhaLista> list);
+        
 
 
 
