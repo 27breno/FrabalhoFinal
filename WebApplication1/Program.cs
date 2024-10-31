@@ -1,4 +1,6 @@
 
+using FrabalhoFinal._2_Repository;
+using FrabalhoFinal._2_Repository.Interface;
 using FrabalhoFinal._4_Data;
 using WebApplication1;
 

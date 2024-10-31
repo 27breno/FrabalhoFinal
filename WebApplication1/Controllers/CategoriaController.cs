@@ -13,10 +13,10 @@ namespace WebApplication1.Controllers
 
         private readonly ICategoriaService service;
         private readonly IMapper mapper;
-        public CategoriaController(IMapper _mapper, IConfiguration configuration)
+        public CategoriaController(IMapper _mapper, IConfiguration configuration, ICategoriaService service)
         {
             string connectionString = configuration.GetConnectionString("DefaultConnection");
-            service = new CategoriaService(connectionString);
+            service = service;
             mapper = _mapper;
 
         }

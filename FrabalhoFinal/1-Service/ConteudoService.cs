@@ -1,5 +1,6 @@
 ﻿using FrabalhoFinal._1_Service.Interfaces;
 using FrabalhoFinal._2_Repository;
+using FrabalhoFinal._2_Repository.Interface;
 using FrabalhoFinal._3_Entidade;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,10 @@ namespace FrabalhoFinal._1_Service
 {
     public class ConteudoService : IConteudoService
     {
-        ConteudoRepository repositorio { get; set; }
-        public ConteudoService(string connectionString)
+        IConteudoRepository repositorio { get; set; }
+        public ConteudoService(IConteudoRepository conteudorepository)
         {
-            repositorio = new ConteudoRepository(connectionString);
+            repositorio = conteudorepository;
         }
         public void Adicionar(Conteudo a)
         {

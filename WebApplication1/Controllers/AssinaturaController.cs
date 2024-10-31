@@ -14,10 +14,10 @@ namespace WebApplication1.Controllers
 
         private readonly IAssinaturaService service;
         private readonly IMapper mapper;
-        public AssinaturaController(IMapper _mapper, IConfiguration configuration)
+        public AssinaturaController(IMapper _mapper, IConfiguration configuration, IAssinaturaService service)
         {
             string connectionString = configuration.GetConnectionString("DefaultConnection");
-            service = new AssinaturaService(connectionString);
+            service = service;
             mapper = _mapper;
 
         }

@@ -1,5 +1,6 @@
 ﻿using FrabalhoFinal._1_Service.Interfaces;
 using FrabalhoFinal._2_Repository;
+using FrabalhoFinal._2_Repository.Interface;
 using FrabalhoFinal._3_Entidade;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,10 @@ namespace FrabalhoFinal._1_Service
 {
     public class AssinaturaService : IAssinaturaService
     {
-        AssinaturaRepository repositorio { get; set; }
-        public AssinaturaService(string connectionString)
+        IAssinaturaRepository repositorio { get; set; }
+        public AssinaturaService(IAssinaturaRepository assinaturareposistory)
         {
-            repositorio = new AssinaturaRepository(connectionString);
+            repositorio = assinaturareposistory;
         }
         public void Adicionar(Assinatura  a)
         {

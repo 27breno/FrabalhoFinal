@@ -1,8 +1,10 @@
 ﻿using Dapper.Contrib.Extensions;
 using FrabalhoFinal._2_Repository.Interface;
 using FrabalhoFinal._3_Entidade;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -13,10 +15,10 @@ namespace FrabalhoFinal._2_Repository
     public class CategoriaRepository : ICategoriaRepository
     {
         private readonly string ConnectionString;
-        public CategoriaRepository(string connectionString)
+        public CategoriaRepository(IConfiguration configuration)
         {
 
-            ConnectionString = connectionString;
+            ConnectionString = configuration.GetConnectionString("DefaultConnection");
 
         }
         public void Adicionar(Categoria u)

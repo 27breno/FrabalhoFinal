@@ -3,8 +3,10 @@ using Dapper.Contrib.Extensions;
 using FrabalhoFinal._2_Repository.Interface;
 using FrabalhoFinal._3_Entidade;
 using FrabalhoFinal._3_Entidade.DTO.MinhaLista;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -15,14 +17,15 @@ namespace FrabalhoFinal._2_Repository
     public class MinhalistaRepository : IMinhalista
     {
         private readonly string ConnectionString;
-        private readonly CategoriaRepository _repositoryCategoria;
-        private readonly ConteudoRepository _repositoryConteudo;
- 
-        public MinhalistaRepository(string connectioString)
+        private readonly ICategoriaRepository _repositoryCategoria;
+        private readonly IConteudoRepository _repositoryConteudo;
+        private IConfiguration connectioString;
+
+        public MinhalistaRepository(IConfiguration configuration, ICategoriaRepository categoriaRepository, IConteudoRepository conteudoRepository)
         {
-            ConnectionString = connectioString;
-            _repositoryCategoria = new CategoriaRepository(connectioString);
-            _repositoryConteudo = new ConteudoRepository(connectioString);
+            ConnectionString = configuration.GetConnectionString("DefaultConnection");
+            _repositoryCategoria = categoriaRepository;
+            _repositoryConteudo = conteudoRepository;
             
         }
         public void Adicionar(MinhaLista carrinho)
@@ -56,8 +59,8 @@ namespace FrabalhoFinal._2_Repository
             foreach (MinhaLista car in list)
             {
                 DTOminhalista readCarrinho = new DTOminhalista();
-                readCarrinho.CategoriaId = _repositoryCategoria.BuscarPorId(car.Categoria);
-                readCarrinho.ConteudoId  = _repositoryConteudo.BuscarPorId(car.Conteudo);
+                readCarrinho.CategoriaId = _repositoryCategoria.Buscarporid(car.Categoria);
+                readCarrinho.ConteudoId  = _repositoryConteudo.Buscarporid(car.Conteudo);
                 listDTO.Add(readCarrinho);
             }
             return listDTO;

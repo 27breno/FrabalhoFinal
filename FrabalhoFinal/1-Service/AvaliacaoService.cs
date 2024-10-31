@@ -1,5 +1,6 @@
 ﻿using FrabalhoFinal._1_Service.Interfaces;
 using FrabalhoFinal._2_Repository;
+using FrabalhoFinal._2_Repository.Interface;
 using FrabalhoFinal._3_Entidade;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,10 @@ namespace FrabalhoFinal._1_Service
 {
     public class AvaliacaoService : IAvaliacaoService
     {
-        AvaliacaoRepository repositorio { get; set; }
-        public AvaliacaoService(string connectionString)
+        IAvaliacaoRepository repositorio { get; set; }
+        public AvaliacaoService(IAvaliacaoRepository avaliacaorepository)
         {
-            repositorio = new AvaliacaoRepository(connectionString);
+            repositorio = avaliacaorepository;
         }
         public void Adicionar(Avaliacao a)
         {

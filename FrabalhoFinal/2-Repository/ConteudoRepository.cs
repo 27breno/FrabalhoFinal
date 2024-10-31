@@ -1,6 +1,7 @@
 ﻿using Dapper.Contrib.Extensions;
 using FrabalhoFinal._2_Repository.Interface;
 using FrabalhoFinal._3_Entidade;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -13,10 +14,10 @@ namespace FrabalhoFinal._2_Repository
     public class ConteudoRepository : IConteudoRepository
     {
         private readonly string ConnectionString;
-        public ConteudoRepository(string connectionString)
+        public ConteudoRepository(IConfiguration configuration)
         {
 
-            ConnectionString = connectionString;
+            ConnectionString = configuration.GetConnectionString("DefaultConnection");
 
         }
         public void Adicionar(Conteudo u)

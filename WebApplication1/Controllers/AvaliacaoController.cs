@@ -12,10 +12,10 @@ namespace WebApplication1.Controllers
     {
         private readonly IAvaliacaoService service;
         private readonly IMapper mapper;
-        public AvaliacaoController(IMapper _mapper, IConfiguration configuration)
+        public AvaliacaoController(IMapper _mapper, IConfiguration configuration, IAvaliacaoService service)
         {
             string connectionString = configuration.GetConnectionString("DefaultConnection");
-            service = new AvaliacaoService(connectionString);
+            service = service ;
             mapper = _mapper;
 
         }

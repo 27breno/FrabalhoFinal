@@ -14,10 +14,10 @@ namespace WebApplication1.Controllers
 
             private readonly IPessoaService service;
             private readonly IMapper mapper;
-            public PessoaController(IMapper _mapper, IConfiguration configuration)
+            public PessoaController(IMapper _mapper, IConfiguration configuration, IPessoaService service)
             {
                 string connectionString = configuration.GetConnectionString("DefaultConnection");
-                service = new PessoaService(connectionString);
+                service = service;
                 mapper = _mapper;
 
             }

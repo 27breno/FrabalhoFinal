@@ -15,10 +15,10 @@ namespace WebApplication1.Controllers
 
         private readonly IConteudoService service;
         private readonly IMapper mapper;
-        public ConteudoController(IMapper _mapper, IConfiguration configuration)
+        public ConteudoController(IMapper _mapper, IConfiguration configuration, IConteudoService service)
         {
             string connectionString = configuration.GetConnectionString("DefaultConnection");
-            service = new ConteudoService(connectionString);
+            service = service;
             mapper = _mapper;
 
         }

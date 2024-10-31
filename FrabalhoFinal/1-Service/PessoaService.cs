@@ -14,10 +14,10 @@ namespace FrabalhoFinal._1_Service
     public class PessoaService : IPessoaService
     {
 
-        PessoaRepository repositorio { get; set; }
-        public PessoaService(string connectionString)
+        IPessoaRepository repositorio { get; set; }
+        public PessoaService(IPessoaRepository pessoarepository)
         {
-            repositorio = new PessoaRepository(connectionString);
+            repositorio = pessoarepository;
         }
         public void Adicionar(Pessoa a)
         {
