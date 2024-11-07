@@ -29,6 +29,9 @@ namespace Frontend
 
         public void IniciarSistema() 
         {
+            Assinatura assinatura = new Assinatura();
+            Console.WriteLine("voce ja tem assinatura ?");
+            
             
         }
         public void MenuPrincipal()

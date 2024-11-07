@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApplication1</name>
+    </assembly>
+    <members>
+        <member name="T:WebApplication1.Controllers.AssinaturaController">
+            <summary>
+            Controlador responsável pelas operações de assinatura.
+            Fornece endpoints para criar, listar, editar e remover assinaturas.
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Controllers.AssinaturaController.#ctor(AutoMapper.IMapper,Microsoft.Extensions.Configuration.IConfiguration,FrabalhoFinal._1_Service.Interfaces.IAssinaturaService)">
+            <summary>
+            Construtor do controlador. Inicializa o serviço de assinatura e o mapeador AutoMapper.
+            </summary>
+            <param name="_mapper">Instância do AutoMapper para mapear objetos.</param>
+            <param name="configuration">Configurações de aplicação, incluindo a string de conexão.</param>
+            <param name="service">Serviço para manipulação de assinaturas.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.AssinaturaController.adicionaraluno(FrabalhoFinal._3_Entidade.Assinatura)">
+            <summary>
+            Adiciona uma nova assinatura.
+            Recebe um objeto de assinatura e chama o serviço para adicioná-la ao banco de dados.
+            </summary>
+            <param name="u">Objeto de assinatura a ser adicionado.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.AssinaturaController.Listaraluno">
+            <summary>
+            Retorna a lista de todas as assinaturas cadastradas.
+            Chama o serviço para listar as assinaturas.
+            </summary>
+            <returns>Uma lista de objetos Assinatura.</returns>
+        </member>
+        <member name="M:WebApplication1.Controllers.AssinaturaController.Removeralunoaluno(System.Int32)">
+            <summary>
+            Remove uma assinatura existente.
+            Recebe o ID da assinatura a ser removida e chama o serviço para removê-la.
+            </summary>
+            <param name="id">ID da assinatura a ser removida.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.AssinaturaController.editaraluno(FrabalhoFinal._3_Entidade.Assinatura)">
+            <summary>
+            Edita uma assinatura existente.
+            Recebe um objeto de assinatura com os novos dados e chama o serviço para editar a assinatura.
+            </summary>
+            <param name="usuario">Objeto de assinatura com os novos dados.</param>
+        </member>
+        <member name="T:WebApplication1.Controllers.AvaliacaoController">
+            <summary>
+            Controlador responsável pelas operações relacionadas à Avaliação.
+            Fornece endpoints para criar, listar, editar e remover avaliações.
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Controllers.AvaliacaoController.#ctor(AutoMapper.IMapper,Microsoft.Extensions.Configuration.IConfiguration,FrabalhoFinal._1_Service.Interfaces.IAvaliacaoService)">
+            <summary>
+            Construtor do controlador. Inicializa o serviço de avaliação e o mapeador AutoMapper.
+            </summary>
+            <param name="_mapper">Instância do AutoMapper para mapear objetos.</param>
+            <param name="configuration">Configurações de aplicação, incluindo a string de conexão.</param>
+            <param name="service">Serviço para manipulação de avaliações.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.AvaliacaoController.adicionaraluno(FrabalhoFinal._3_Entidade.Avaliacao)">
+            <summary>
+            Adiciona uma nova avaliação.
+            Recebe um objeto de avaliação, mapeia para o tipo correto e chama o serviço para adicionar.
+            </summary>
+            <param name="u">Objeto de avaliação a ser adicionado.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.AvaliacaoController.Listaraluno">
+            <summary>
+            Retorna a lista de todas as avaliações cadastradas.
+            Chama o serviço para listar as avaliações.
+            </summary>
+            <returns>Uma lista de objetos Avaliacao.</returns>
+        </member>
+        <member name="M:WebApplication1.Controllers.AvaliacaoController.Removeralunoaluno(System.Int32)">
+            <summary>
+            Remove uma avaliação existente.
+            Recebe o ID da avaliação a ser removida e chama o serviço para removê-la.
+            </summary>
+            <param name="id">ID da avaliação a ser removida.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.AvaliacaoController.editaraluno(FrabalhoFinal._3_Entidade.Avaliacao)">
+            <summary>
+            Edita uma avaliação existente.
+            Recebe um objeto de avaliação com os novos dados e chama o serviço para editar a avaliação.
+            </summary>
+            <param name="usuario">Objeto de avaliação com os novos dados.</param>
+        </member>
+        <member name="T:WebApplication1.Controllers.CategoriaController">
+            <summary>
+            Controlador responsável pelas operações de categoria.
+            Fornece endpoints para criar, listar, editar e remover categorias.
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Controllers.CategoriaController.#ctor(AutoMapper.IMapper,Microsoft.Extensions.Configuration.IConfiguration,FrabalhoFinal._1_Service.Interfaces.ICategoriaService)">
+            <summary>
+            Construtor do controlador. Inicializa o serviço de categoria e o mapeador AutoMapper.
+            </summary>
+            <param name="_mapper">Instância do AutoMapper para mapear objetos.</param>
+            <param name="configuration">Configurações de aplicação, incluindo a string de conexão.</param>
+            <param name="service">Serviço para manipulação de categorias.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.CategoriaController.adicionaraluno(FrabalhoFinal._3_Entidade.Categoria)">
+            <summary>
+            Adiciona uma nova categoria.
+            Recebe um objeto de categoria e chama o serviço para adicioná-la ao banco de dados.
+            </summary>
+            <param name="u">Objeto de categoria a ser adicionado.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.CategoriaController.Listaraluno">
+            <summary>
+            Retorna a lista de todas as categorias cadastradas.
+            Chama o serviço para listar as categorias.
+            </summary>
+            <returns>Uma lista de objetos Categoria.</returns>
+        </member>
+        <member name="M:WebApplication1.Controllers.CategoriaController.Removeralunoaluno(System.Int32)">
+            <summary>
+            Remove uma categoria existente.
+            Recebe o ID da categoria a ser removida e chama o serviço para removê-la.
+            </summary>
+            <param name="id">ID da categoria a ser removida.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.CategoriaController.editaraluno(FrabalhoFinal._3_Entidade.Categoria)">
+            <summary>
+            Edita uma categoria existente.
+            Recebe um objeto de categoria com os novos dados e chama o serviço para editar a categoria.
+            </summary>
+            <param name="usuario">Objeto de categoria com os novos dados.</param>
+        </member>
+        <member name="T:WebApplication1.Controllers.ConteudoController">
+            <summary>
+            Controlador responsável pelas operações de conteúdo.
+            Fornece endpoints para criar, listar, editar e remover conteúdos.
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Controllers.ConteudoController.#ctor(AutoMapper.IMapper,Microsoft.Extensions.Configuration.IConfiguration,FrabalhoFinal._1_Service.Interfaces.IConteudoService)">
+            <summary>
+            Construtor do controlador. Inicializa o serviço de conteúdo e o mapeador AutoMapper.
+            </summary>
+            <param name="_mapper">Instância do AutoMapper para mapear objetos.</param>
+            <param name="configuration">Configurações de aplicação, incluindo a string de conexão.</param>
+            <param name="service">Serviço para manipulação de conteúdos.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.ConteudoController.adicionaraluno(FrabalhoFinal._3_Entidade.Conteudo)">
+            <summary>
+            Adiciona um novo conteúdo.
+            Recebe um objeto de conteúdo e chama o serviço para adicioná-lo ao banco de dados.
+            </summary>
+            <param name="u">Objeto de conteúdo a ser adicionado.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.ConteudoController.Listaraluno">
+            <summary>
+            Retorna a lista de todos os conteúdos cadastrados.
+            Chama o serviço para listar os conteúdos.
+            </summary>
+            <returns>Uma lista de objetos Conteudo.</returns>
+        </member>
+        <member name="M:WebApplication1.Controllers.ConteudoController.Removeralunoaluno(System.Int32)">
+            <summary>
+            Remove um conteúdo existente.
+            Recebe o ID do conteúdo a ser removido e chama o serviço para removê-lo.
+            </summary>
+            <param name="id">ID do conteúdo a ser removido.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.ConteudoController.editaraluno(FrabalhoFinal._3_Entidade.Conteudo)">
+            <summary>
+            Edita um conteúdo existente.
+            Recebe um objeto de conteúdo com os novos dados e chama o serviço para editar o conteúdo.
+            </summary>
+            <param name="usuario">Objeto de conteúdo com os novos dados.</param>
+        </member>
+        <member name="T:WebApplication1.Controllers.PessoaController">
+            <summary>
+            Controlador responsável pelas operações de pessoa.
+            Fornece endpoints para criar, listar, editar e remover pessoas.
+            </summary>
+        </member>
+        <member name="M:WebApplication1.Controllers.PessoaController.#ctor(AutoMapper.IMapper,Microsoft.Extensions.Configuration.IConfiguration,FrabalhoFinal._1_Service.Interfaces.IPessoaService)">
+            <summary>
+            Construtor do controlador. Inicializa o serviço de pessoa e o mapeador AutoMapper.
+            </summary>
+            <param name="_mapper">Instância do AutoMapper para mapear objetos.</param>
+            <param name="configuration">Configurações de aplicação, incluindo a string de conexão.</param>
+            <param name="service">Serviço para manipulação de pessoas.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.PessoaController.adicionaraluno(FrabalhoFinal._3_Entidade.Pessoa)">
+            <summary>
+            Adiciona uma nova pessoa.
+            Recebe um objeto de pessoa e chama o serviço para adicioná-la ao banco de dados.
+            </summary>
+            <param name="u">Objeto de pessoa a ser adicionado.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.PessoaController.Listaraluno">
+            <summary>
+            Retorna a lista de todas as pessoas cadastradas.
+            Chama o serviço para listar as pessoas.
+            </summary>
+            <returns>Uma lista de objetos Pessoa.</returns>
+        </member>
+        <member name="M:WebApplication1.Controllers.PessoaController.Removeralunoaluno(System.Int32)">
+            <summary>
+            Remove uma pessoa existente.
+            Recebe o ID da pessoa a ser removida e chama o serviço para removê-la.
+            </summary>
+            <param name="id">ID da pessoa a ser removida.</param>
+        </member>
+        <member name="M:WebApplication1.Controllers.PessoaController.editaraluno(FrabalhoFinal._3_Entidade.Pessoa)">
+            <summary>
+            Edita uma pessoa existente.
+            Recebe um objeto de pessoa com os novos dados e chama o serviço para editar a pessoa.
+            </summary>
+            <param name="usuario">Objeto de pessoa com os novos dados.</param>
+        </member>
+    </members>
+</doc>
