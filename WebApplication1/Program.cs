@@ -1,4 +1,6 @@
 
+using FrabalhoFinal._1_Service;
+using FrabalhoFinal._1_Service.Interfaces;
 using FrabalhoFinal._2_Repository;
 using FrabalhoFinal._2_Repository.Interface;
 using FrabalhoFinal._4_Data;
@@ -27,6 +29,10 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 builder.Services.AddAutoMapper(typeof(mappingprofile));
+
+builder.Services.AddScoped<IAssinaturaService, AssinaturaService>();
+builder.Services.AddScoped<IAssinaturaRepository, AssinaturaRepository>();
+
 var app = builder.Build();
 InicalizadorBD.Inicializador();
 // Configure the HTTP request pipeline.

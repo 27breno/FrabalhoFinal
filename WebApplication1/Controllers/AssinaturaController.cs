@@ -41,10 +41,21 @@ namespace WebApplication1.Controllers
         /// </summary>
         /// <param name="u">Objeto de assinatura a ser adicionado.</param>
         [HttpPost("adicionar-Avaliação")]
-        public void adicionaraluno(Assinatura u)
+        public IActionResult adicionaraluno(Assinatura u)
         {
             // Adiciona a assinatura recebida ao banco de dados
-            service.Adicionar(u);
+           
+            try
+            {
+                service.Adicionar(u);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest($"Ocorreu um erro ao adicionar endereco," +
+              $"o erro foi \n{erro.Message}");
+                
+            }
         }
 
         /// <summary>
@@ -65,10 +76,11 @@ namespace WebApplication1.Controllers
         /// </summary>
         /// <param name="id">ID da assinatura a ser removida.</param>
         [HttpDelete("Remover-Avaliação")]
-        public void Removeralunoaluno(int id)
+        public IActionResult Removeralunoaluno(int id)
         {
             // Chama o serviço para remover a assinatura pelo ID
             service.Remover(id);
+            return NoContent();
         }
 
         /// <summary>
@@ -77,10 +89,11 @@ namespace WebApplication1.Controllers
         /// </summary>
         /// <param name="usuario">Objeto de assinatura com os novos dados.</param>
         [HttpPut("editar-Avaliação")]
-        public void editaraluno(Assinatura usuario)
+        public IActionResult editaraluno(Assinatura usuario)
         {
             // Chama o serviço para editar a assinatura
             service.editar(usuario);
+            return NoContent();
         }
     }
 }

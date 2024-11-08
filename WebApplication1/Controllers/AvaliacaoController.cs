@@ -41,13 +41,25 @@ namespace WebApplication1.Controllers
         /// </summary>
         /// <param name="u">Objeto de avaliação a ser adicionado.</param>
         [HttpPost("adicionar-Avaliação")]
-        public void adicionaraluno(Avaliacao u)
+        public IActionResult adicionaraluno(Avaliacao u)
         {
             // Mapeia a avaliação recebida para o modelo de entidade Avaliacao
-            Avaliacao usuario = mapper.Map<Avaliacao>(u);
 
-            // Chama o serviço para adicionar a avaliação
-            service.Adicionar(usuario);
+            //Avaliacao usuario = mapper.Map<Avaliacao>(u);
+            try
+            {
+                service.Adicionar(u);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest($"Ocorreu um erro ao adicionar endereco," +
+                    $"o erro foi \n{erro.Message}");
+               
+            }
+            
+           
         }
 
         /// <summary>
@@ -68,10 +80,11 @@ namespace WebApplication1.Controllers
         /// </summary>
         /// <param name="id">ID da avaliação a ser removida.</param>
         [HttpDelete("Remover-Avaliação")]
-        public void Removeralunoaluno(int id)
+        public IActionResult Removeralunoaluno(int id)
         {
             // Chama o serviço para remover a avaliação pelo ID
             service.Remover(id);
+            return NoContent();
         }
 
         /// <summary>
@@ -80,10 +93,11 @@ namespace WebApplication1.Controllers
         /// </summary>
         /// <param name="usuario">Objeto de avaliação com os novos dados.</param>
         [HttpPut("editar-Avaliação")]
-        public void editaraluno(Avaliacao usuario)
+        public IActionResult editaraluno(Avaliacao usuario)
         {
             // Chama o serviço para editar a avaliação
             service.editar(usuario);
+            return NoContent() ;
         }
     }
 }

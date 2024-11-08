@@ -18,9 +18,9 @@ namespace Frontend.Usecases
         {
             return _client.GetFromJsonAsync<List<PessoaUC>>("Pessoa/adicionar-Avaliação" + usuarioId).Result;
         }
-        public PessoaUC CadastroCategoria(PessoaUC endereco)
+        public PessoaUC CadastroCategoria(PessoaUC pessoa)
         {
-            HttpResponseMessage response = _client.PostAsJsonAsync("Pessoa/adicionar-Avaliação", endereco).Result;
+            HttpResponseMessage response = _client.PostAsJsonAsync("Pessoa/adicionar-Avaliação", pessoa).Result;
 
             PessoaUC enderecoCadastrado = response.Content.ReadFromJsonAsync<PessoaUC>().Result;
             return enderecoCadastrado;

@@ -41,10 +41,20 @@ namespace WebApplication1.Controllers
         /// </summary>
         /// <param name="u">Objeto de conteúdo a ser adicionado.</param>
         [HttpPost("adicionar-Avaliação")]
-        public void adicionaraluno(Conteudo u)
+        public IActionResult adicionaraluno(Conteudo u)
         {
-            // Adiciona o conteúdo ao banco de dados
-            service.Adicionar(u);
+
+            try
+            {
+                service.Adicionar(u);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest($"Ocorreu um erro ao adicionar endereco," +
+                   $"o erro foi \n{erro.Message}");
+
+            }
         }
 
         /// <summary>
@@ -65,10 +75,11 @@ namespace WebApplication1.Controllers
         /// </summary>
         /// <param name="id">ID do conteúdo a ser removido.</param>
         [HttpDelete("Remover-Avaliação")]
-        public void Removeralunoaluno(int id)
+        public IActionResult Removeralunoaluno(int id)
         {
             // Chama o serviço para remover o conteúdo pelo ID
             service.Remover(id);
+            return NoContent();
         }
 
         /// <summary>
@@ -77,10 +88,11 @@ namespace WebApplication1.Controllers
         /// </summary>
         /// <param name="usuario">Objeto de conteúdo com os novos dados.</param>
         [HttpPut("editar-Avaliação")]
-        public void editaraluno(Conteudo usuario)
+        public IActionResult editaraluno(Conteudo usuario)
         {
             // Chama o serviço para editar o conteúdo
             service.editar(usuario);
+            return NoContent();
         }
     }
 }

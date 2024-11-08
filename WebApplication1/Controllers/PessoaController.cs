@@ -41,13 +41,25 @@ namespace WebApplication1.Controllers
         /// </summary>
         /// <param name="u">Objeto de pessoa a ser adicionado.</param>
         [HttpPost("adicionar-Avaliação")]
-        public void adicionaraluno(Pessoa u)
+        public IActionResult adicionaraluno(Pessoa u)
         {
             // Mapeia o objeto recebido para a entidade Pessoa (se necessário)
             Pessoa usuario = mapper.Map<Pessoa>(u);
 
-            // Chama o serviço para adicionar a pessoa ao banco de dados
-            service.Adicionar(usuario);
+            try
+            {
+                service.Adicionar(usuario);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest($"Ocorreu um erro ao adicionar endereco," +
+                   $"o erro foi \n{erro.Message}");
+
+            }
+
+
         }
 
         /// <summary>
@@ -68,10 +80,11 @@ namespace WebApplication1.Controllers
         /// </summary>
         /// <param name="id">ID da pessoa a ser removida.</param>
         [HttpDelete("Remover-Avaliação")]
-        public void Removeralunoaluno(int id)
+        public IActionResult Removeralunoaluno(int id)
         {
             // Chama o serviço para remover a pessoa pelo ID
             service.Remover(id);
+            return NoContent();
         }
 
         /// <summary>
@@ -80,10 +93,11 @@ namespace WebApplication1.Controllers
         /// </summary>
         /// <param name="usuario">Objeto de pessoa com os novos dados.</param>
         [HttpPut("editar-Avaliação")]
-        public void editaraluno(Pessoa usuario)
+        public IActionResult editaraluno(Pessoa usuario)
         {
             // Chama o serviço para editar a pessoa
             service.editar(usuario);
+            return NoContent();
         }
     }
 }
