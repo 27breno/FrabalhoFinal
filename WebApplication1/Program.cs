@@ -3,6 +3,7 @@ using FrabalhoFinal._1_Service;
 using FrabalhoFinal._1_Service.Interfaces;
 using FrabalhoFinal._2_Repository;
 using FrabalhoFinal._2_Repository.Interface;
+using FrabalhoFinal._3_Entidade;
 using FrabalhoFinal._4_Data;
 using Microsoft.OpenApi.Models;
 using WebApplication1;
@@ -32,6 +33,20 @@ builder.Services.AddAutoMapper(typeof(mappingprofile));
 
 builder.Services.AddScoped<IAssinaturaService, AssinaturaService>();
 builder.Services.AddScoped<IAssinaturaRepository, AssinaturaRepository>();
+
+builder.Services.AddScoped<IAvaliacaoService, AvaliacaoService>();
+builder.Services.AddScoped<IAvaliacaoRepository, AvaliacaoRepository>();
+
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+
+builder.Services.AddScoped<IConteudoService, ConteudoService>();
+builder.Services.AddScoped<IConteudoRepository, ConteudoRepository>();
+
+builder.Services.AddScoped<IPessoaService, PessoaService>();
+builder.Services.AddScoped<IPessoaRepository, PessoaRepository>();
+
+
 
 var app = builder.Build();
 InicalizadorBD.Inicializador();

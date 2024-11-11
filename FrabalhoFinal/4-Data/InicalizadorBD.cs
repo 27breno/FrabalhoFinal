@@ -24,7 +24,7 @@ namespace FrabalhoFinal._4_Data
                         Comentario TEXT NOT NULL
                     );";
           
-
+                // tem que olhar o conteudos casa da erro
                 using (var command = new SQLiteCommand(commandoSQL, connection))
                 {
                     command.ExecuteNonQuery();
@@ -36,7 +36,7 @@ namespace FrabalhoFinal._4_Data
                         Descricao TEXT NOT NULL,
                         AnoLancamento INTERGER NOT NULL,
                         Genero TEXT NOT NULL,
-                        Duracao INTERGER NOT NULL,
+                        Duracao TEXT NOT NULL,
                        CategoriaId INTERGER NOT NULL
                     );";
 
@@ -49,7 +49,9 @@ namespace FrabalhoFinal._4_Data
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Nome TEXT NOT NULL,
                         Idade INTEGER NOT NULL,
-                        CPF INTEGER NOT NULL
+                        Email  TEXT NOT NULL,
+                        CPF INTEGER NOT NULL,
+                        Senha TEXT  NOT NULL
                     );";
 
                 using (var command = new SQLiteCommand(commandoSQL, connection))
