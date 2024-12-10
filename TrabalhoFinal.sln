@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrabalhoFinal", "FrabalhoFi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{F454DD91-46CE-49C5-A9E9-1DF2BB5B68F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "Frontend\Frontend.csproj", "{8C1111C0-C04E-42D9-A39E-9DDC19C22666}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontend", "Frontend\Frontend.csproj", "{8C1111C0-C04E-42D9-A39E-9DDC19C22666}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

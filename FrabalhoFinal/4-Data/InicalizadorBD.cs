@@ -35,7 +35,6 @@ namespace FrabalhoFinal._4_Data
                         Titulo TEXT NOT NULL,
                         Descricao TEXT NOT NULL,
                         AnoLancamento INTERGER NOT NULL,
-                        Genero TEXT NOT NULL,
                         Duracao TEXT NOT NULL,
                        CategoriaId INTERGER NOT NULL
                     );";
@@ -50,7 +49,7 @@ namespace FrabalhoFinal._4_Data
                         Nome TEXT NOT NULL,
                         Idade INTEGER NOT NULL,
                         Email  TEXT NOT NULL,
-                        CPF INTEGER NOT NULL,
+                        CPF TEXT NOT NULL,
                         Senha TEXT  NOT NULL
                     );";
 
@@ -80,9 +79,8 @@ namespace FrabalhoFinal._4_Data
                         Titulo TEXT NOT NULL,
                         Descricao TEXT NOT NULL,
                         AnoLancamento INTERGER  NOT NULL,
-                        Genero TEXT NOT NULL,
                         Pessoaid INTERGER NOT NULL,
-                        Duracao INTERGER NOT NULL,
+                        Duracao TEXT NOT NULL,
                         CategoriaId INTERGER NOT NULL
                       
                     );";
