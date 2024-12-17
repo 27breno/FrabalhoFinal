@@ -2,7 +2,6 @@
 using System.Net.Http;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Frontend.Usecases;
 using FrabalhoFinal._3_Entidade;
 using Frontend.Models;
@@ -26,40 +25,34 @@ public class Sistema
         usuarioLogado = null; // Inicialmente, o usuário não está logado
     }
 
-    // Inicia o sistema e verifica se o usuário está logado ou precisa se cadastrar
     public void IniciarSistema()
     {
-        Console.Clear();
-        Console.WriteLine("Bem-vindo ao sistema! Você já possui uma conta?");
-
-        if (usuarioLogado == null)
+        while (true)
         {
-            Console.WriteLine("1 - Sim");
-            Console.WriteLine("2 - Não");
-            int resposta;
-            if (!int.TryParse(Console.ReadLine(), out resposta) || (resposta != 1 && resposta != 2))
-            {
-                Console.WriteLine("Opção inválida.");
-                return;
-            }
+            Console.Clear();
+            Console.WriteLine("Bem-vindo ao sistema!");
+            Console.WriteLine("1 - Fazer Login");
+            Console.WriteLine("2 - Cadastrar-se");
+            Console.WriteLine("0 - Sair");
 
-            if (resposta == 1)
+            int opcao = LerEntradaNumerica(0, 2);
+
+            if (opcao == 1)
             {
                 Login();
             }
-            else
+            else if (opcao == 2)
             {
                 Cadastrar();
-                Login();
             }
-        }
-        else
-        {
-            MenuPrincipal();
+            else if (opcao == 0)
+            {
+                Console.WriteLine("Encerrando o sistema...");
+                break;
+            }
         }
     }
 
-    // Exibe o menu principal e permite que o usuário escolha suas opções
     public void MenuPrincipal()
     {
         while (true)
@@ -74,12 +67,7 @@ public class Sistema
             Console.WriteLine("5 - Atualizar Assinatura");
             Console.WriteLine("6 - Logout");
 
-            int opcao;
-            if (!int.TryParse(Console.ReadLine(), out opcao))
-            {
-                Console.WriteLine("Opção inválida.");
-                continue;
-            }
+            int opcao = LerEntradaNumerica(1, 6);
 
             switch (opcao)
             {
@@ -100,17 +88,90 @@ public class Sistema
                     break;
                 case 6:
                     Logout();
-                    return;  // Sair do sistema
-                default:
-                    Console.WriteLine("Opção inválida.");
-                    break;
+                    return;
             }
         }
     }
 
-    // Método para listar as assinaturas do usuário
-    public void ListarAssinaturas()
+    // Cadastro de novos usuários
+    private void Cadastrar()
     {
+        Console.Clear();
+        Console.WriteLine("Cadastro de novo usuário:");
+        Console.WriteLine("Digite seu nome:");
+        string nome = Console.ReadLine();
+
+        Console.WriteLine("Digite sua idade:");
+        int idade = LerEntradaNumerica(1, 150);
+
+        Console.WriteLine("Digite seu CPF (apenas números):");
+        string cpf = Console.ReadLine();
+        while (!ValidarCPF(cpf))
+        {
+            Console.WriteLine("CPF inválido. Digite novamente:");
+            cpf = Console.ReadLine();
+        }
+
+        Console.WriteLine("Digite seu email:");
+        string email = Console.ReadLine();
+
+        Console.WriteLine("Digite sua senha:");
+        string senha = Console.ReadLine();
+
+        var pessoa = new Pessoa
+        {
+            Nome = nome,
+            Idade = idade,
+            CPF = int.Parse(cpf),
+            Email = email,
+            Senha = senha
+        };
+
+        usuarioLogado = _pessoaUC.CadastroPessoa(pessoa);
+
+        if (usuarioLogado != null)
+        {
+            Console.WriteLine($"Cadastro realizado com sucesso! Bem-vindo, {usuarioLogado.Nome}.");
+            Console.WriteLine("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
+            MenuPrincipal();
+        }
+        else
+        {
+            Console.WriteLine("Erro ao realizar o cadastro. Tente novamente.");
+        }
+    }
+
+    // Login de usuários existentes
+    private void Login()
+    {
+        Console.Clear();
+        Console.WriteLine("Digite seu email:");
+        string email = Console.ReadLine();
+
+        Console.WriteLine("Digite sua senha:");
+        string senha = Console.ReadLine();
+
+        usuarioLogado = _pessoaUC.Login(email, senha);
+
+        if (usuarioLogado != null)
+        {
+            Console.WriteLine($"Login realizado com sucesso! Bem-vindo, {usuarioLogado.Nome}.");
+            Console.WriteLine("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
+            MenuPrincipal();
+        }
+        else
+        {
+            Console.WriteLine("Email ou senha incorretos. Tente novamente.");
+            Console.WriteLine("Pressione qualquer tecla para continuar...");
+            Console.ReadKey();
+        }
+    }
+
+    private void ListarAssinaturas()
+    {
+        Console.Clear();
         var assinaturas = _assinaturaUC.ListarAssinaturas(usuarioLogado.Id);
 
         if (assinaturas.Count > 0)
@@ -118,7 +179,7 @@ public class Sistema
             Console.WriteLine("Suas assinaturas:");
             foreach (var assinatura in assinaturas)
             {
-                Console.WriteLine(assinatura.ToString());
+                Console.WriteLine(assinatura);
             }
         }
         else
@@ -129,39 +190,27 @@ public class Sistema
         RetornarMenu();
     }
 
-    // Método para criar uma avaliação
-    public void CriarAvaliacao()
+    private void CriarAvaliacao()
     {
+        Console.Clear();
         var assinaturas = _assinaturaUC.ListarAssinaturas(usuarioLogado.Id);
         if (assinaturas.All(a => a.Status != "premium"))
         {
-            Console.WriteLine("Você precisa ter uma assinatura Premium para avaliar conteúdos.");
+            Console.WriteLine("Você precisa de uma assinatura Premium para avaliar conteúdos.");
             RetornarMenu();
             return;
         }
 
-        Console.WriteLine("Digite o ID do conteúdo que você deseja avaliar:");
-        int conteudoId;
-        if (!int.TryParse(Console.ReadLine(), out conteudoId))
-        {
-            Console.WriteLine("ID inválido.");
-            RetornarMenu();
-            return;
-        }
+        Console.WriteLine("Digite o ID do conteúdo que deseja avaliar:");
+        int conteudoId = LerEntradaNumerica();
 
         Console.WriteLine("Digite sua nota (0 a 5):");
-        int nota;
-        if (!int.TryParse(Console.ReadLine(), out nota) || nota < 0 || nota > 5)
-        {
-            Console.WriteLine("Nota inválida.");
-            RetornarMenu();
-            return;
-        }
+        int nota = LerEntradaNumerica(0, 5);
 
         Console.WriteLine("Digite seu comentário:");
         string comentario = Console.ReadLine();
 
-        Avaliacao avaliacao = new Avaliacao
+        var avaliacao = new Avaliacao
         {
             ConteudoId = conteudoId,
             PessoaId = usuarioLogado.Id,
@@ -169,166 +218,98 @@ public class Sistema
             Comentario = comentario
         };
 
-        var resultado = _avaliacaoUC.CadastroAvaliacao(avaliacao);
+        _avaliacaoUC.CadastroAvaliacao(avaliacao);
         Console.WriteLine("Avaliação criada com sucesso!");
-        Console.WriteLine(resultado.ToString());
-
         RetornarMenu();
     }
 
-    // Método para listar categorias
-    public void ListarCategorias()
+    private void ListarCategorias()
     {
+        Console.Clear();
         var categorias = _categoriaUC.ListarCategoria(usuarioLogado.Id);
-
         if (categorias.Count > 0)
         {
             Console.WriteLine("Categorias disponíveis:");
             foreach (var categoria in categorias)
             {
-                Console.WriteLine(categoria.ToString());
+                Console.WriteLine(categoria);
             }
         }
         else
         {
             Console.WriteLine("Nenhuma categoria encontrada.");
         }
-
         RetornarMenu();
     }
 
-    // Método para listar conteúdos
-    public void ListarConteudos()
+    private void ListarConteudos()
     {
+        Console.Clear();
         var conteudos = _conteudoUC.ListarCategoria(usuarioLogado.Id);
-
         if (conteudos.Count > 0)
         {
             Console.WriteLine("Conteúdos disponíveis:");
             foreach (var conteudo in conteudos)
             {
-                Console.WriteLine(conteudo.ToString());
+                Console.WriteLine(conteudo);
             }
         }
         else
         {
             Console.WriteLine("Nenhum conteúdo encontrado.");
         }
-
         RetornarMenu();
     }
 
-    // Método para atualizar assinatura (por exemplo, mudar para um plano diferente)
-    public void AtualizarAssinatura()
+    private void AtualizarAssinatura()
     {
+        Console.Clear();
         Console.WriteLine("Escolha o tipo de assinatura:");
-        Console.WriteLine("1 - Básico");
-        Console.WriteLine("2 - Premium");
+        Console.WriteLine("1 - Básico (R$9,99)");
+        Console.WriteLine("2 - Premium (R$29,99)");
 
-        int opcao;
-        if (!int.TryParse(Console.ReadLine(), out opcao) || (opcao != 1 && opcao != 2))
-        {
-            Console.WriteLine("Opção inválida.");
-            return;
-        }
-
+        int opcao = LerEntradaNumerica(1, 2);
         string status = opcao == 1 ? "basico" : "premium";
 
-        Assinatura novaAssinatura = new Assinatura
+        var assinatura = new Assinatura
         {
             Pessoaid = usuarioLogado.Id,
             Status = status,
             DataInicio = DateTime.Now,
-            Valor = status == "premium" ? 29.99m : 9.99m // Definindo valores fictícios para as assinaturas
+            Valor = opcao == 1 ? 9.99m : 29.99m
         };
 
-        var assinaturaAtualizada = _assinaturaUC.CadastroAssinatura(novaAssinatura);
-        Console.WriteLine($"Assinatura {status} atualizada com sucesso!");
-
+        _assinaturaUC.CadastroAssinatura(assinatura);
+        Console.WriteLine("Assinatura atualizada com sucesso!");
         RetornarMenu();
     }
 
-    // Método de logout
-    public void Logout()
+    private void Logout()
     {
         usuarioLogado = null;
-        Console.WriteLine("Você foi desconectado.");
+        Console.WriteLine("Logout realizado com sucesso.");
         IniciarSistema();
     }
 
-    // Método de login
-    public void Login()
-    {
-        Console.Clear();
-        Console.WriteLine("Digite seu nome:");
-        string nome = Console.ReadLine();
-
-        Console.WriteLine("Digite sua senha:");
-        string senha = Console.ReadLine();
-
-        usuarioLogado = _pessoaUC.Login(nome, senha);
-
-        if (usuarioLogado != null)
-        {
-            Console.WriteLine($"Bem-vindo, {usuarioLogado.Nome}!");
-            MenuPrincipal();
-        }
-        else
-        {
-            Console.WriteLine("Usuário ou senha inválidos.");
-            RetornarMenu();
-        }
-    }
-
-    // Método de cadastro
-    public void Cadastrar()
-    {
-        Pessoa pessoa = new Pessoa();
-
-        Console.Clear();
-        Console.WriteLine("Digite seu nome:");
-        pessoa.Nome = Console.ReadLine();
-
-        Console.WriteLine("Digite sua idade:");
-        pessoa.Idade = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Digite seu CPF (Somente números):");
-        string cpf = Console.ReadLine();
-
-        if (!ValidarCPF(cpf))
-        {
-            Console.WriteLine("CPF inválido. Tente novamente.");
-            return;
-        }
-
-        pessoa.CPF = int.Parse(cpf);
-
-        Console.WriteLine("Digite seu email:");
-        pessoa.Email = Console.ReadLine();
-
-        Console.WriteLine("Digite sua senha:");
-        pessoa.Senha = Console.ReadLine();
-
-        usuarioLogado = _pessoaUC.CadastroPessoa(pessoa);
-
-        Console.WriteLine($"Cadastro realizado com sucesso! Bem-vindo, {usuarioLogado.Nome}.");
-        RetornarMenu();
-    }
-
-    // Método de validação de CPF
-    public bool ValidarCPF(string cpf)
-    {
-        if (cpf.Length != 11 || !cpf.All(char.IsDigit)) return false;
-
-        // Lógica de validação de CPF pode ser melhorada conforme a regra
-        return true;
-    }
-
-    // Método para voltar ao menu principal
-    public void RetornarMenu()
+    private void RetornarMenu()
     {
         Console.WriteLine("Pressione qualquer tecla para voltar ao menu...");
         Console.ReadKey();
         MenuPrincipal();
+    }
+
+    private int LerEntradaNumerica(int min = int.MinValue, int max = int.MaxValue)
+    {
+        int valor;
+        while (!int.TryParse(Console.ReadLine(), out valor) || valor < min || valor > max)
+        {
+            Console.WriteLine($"Digite um número válido entre {min} e {max}:");
+        }
+        return valor;
+    }
+
+    private bool ValidarCPF(string cpf)
+    {
+        return cpf.Length == 11 && cpf.All(char.IsDigit); // Simplificação
     }
 }
